@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star Wars!</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Hammersmith+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="assets/css/style.css"/>
+	<style>
+	div {
+  margin-bottom: 20px;
+}
+.correct, .incorrect {
+  text-transform: capitalize;
+}
+
+
+	</style>
+</head>
+<body>
+    <div class='container'> 
+		<div class='row'>
+			<div class="col-sm-12">
+				<div class="game">
+					<h1 class="text-center">Totally Trivial Trivia!</h1>
+					<button class="btn btn-magenta" id="start_button">start game</button>
+					<h5 id="timer"></h5>
+					<h3 class="question" id="question_div"></h3>
+					<div id="choices_div"></div>
+					<div class="img-section"></div>
+					<div class="correct"></div>
+					<div class="incorrect"></div>
+					<div class="final-result">
+					</div>
+				</div>
+			</div>
+        </div>
+	</div>
+
+	
+			
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="assets/js/game.js"></script>
+</body>
+</html>

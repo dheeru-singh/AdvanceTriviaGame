@@ -1,0 +1,74 @@
+body{
+    margin: 0;
+    font-family: 'Hammersmith One', sans-serif;
+    background: url(../images/back-img.jpg);
+    background-repeat: repeat;
+    background-attachment: fixed;
+    background-size:cover; 
+}
+.game{
+    padding: 1rem;
+    padding-top: 20px;
+    background-color: rgba(255, 255, 255, 0.89);
+    min-height: 400px;
+    box-shadow: 1px 2px 30.5px #000;
+    text-align: center;
+    margin: 6rem auto;   
+}
+p{   
+    width: 100%;
+}
+h1{
+    color: #0e43aa;
+    font-weight: bold;
+    font-size: 3em;
+    border-bottom: 1px dashed;
+    display: inline-block;
+    padding: 15px 0px;
+    margin-bottom: 35px;
+}
+.question{
+    margin: 2rem 0rem 1rem;
+    color:#0e43aa;
+}
+.question ~ input{
+    margin: 0px 2px 0px 10px;
+}
+
+.btn-magenta{
+    background-color: #0e43aa;
+    border: 1px solid #0e43aa;
+    color:#fff;
+    display: block;
+    margin: 2rem auto;
+    font-size: 2rem;
+    padding: 0rem 2rem;
+    border-radius: 0;
+}
+.btn-magenta:hover{
+    color: #fff;
+    box-shadow: 1px 2px 6.5px rgba(0, 0, 0, 0.89);
+}
+#choices_div button{
+    /* background-color: black;
+    color: #fff;
+    border: 1px solid #ffde4a;
+    padding: 3px 15px;
+    border-radius: 5px;
+    } */
+    background-color: #0e43aa;
+    border: 1px solid #0e43aa;
+    margin: 2px;
+    color: #fff;
+    font-size: 1rem;
+    padding: 0rem 1rem;
+    border-radius: 0;
+}
+#choices_div button:hover{
+    color: #fff;
+    box-shadow: 1px 2px 6.5px rgba(0, 0, 0, 0.89);
+}
+.img-section img{
+    width:300px;
+    box-shadow: 1px 2px 6.5px rgba(0, 0, 0, 0.89);
+}
