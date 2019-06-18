@@ -1,4 +1,5 @@
 $.fn.trivia = function() {
+    //taking a variable _t which is equal to "this" 
     var _t = this;
     _t.userPick = null;
     _t.answers = {
@@ -8,6 +9,7 @@ $.fn.trivia = function() {
     _t.images = null;
     _t.count = 30;
     _t.current = 0;
+    //question declaration 
     _t.questions = [{
         question: "In Aladdin, what is the name of Jasmine's pet tiger?",
         choices: ["Rajah", "Bo", "Iago", "Jack"],
@@ -55,6 +57,7 @@ $.fn.trivia = function() {
         images: ["assets/images/Bambi-owl.gif"],
         correct: 3
     }];
+    // Ask function is the function who call 1 question one by one
     _t.ask = function() {
         if (_t.questions[_t.current]) {
             $("#timer").html("Time remaining: " + "00:" + _t.count + " secs");
@@ -70,35 +73,42 @@ $.fn.trivia = function() {
             }
             window.triviaCounter = setInterval(_t.timer, 1000);
         } else {
+           
             $('.final-result').append($('<div />', {
                 text: 'Unanswered: ' + (
                     _t.questions.length - (_t.answers.correct + _t.answers.incorrect)),
                 class: 'result'
             }));
+            $('#question_div').html("");
+            $('.correct').html('Correct answers: ' + _t.answers.correct);
+            $('.incorrect').html('Incorrect answers: ' + _t.answers.incorrect);
+  
             $('#start_button').text('Restart').appendTo('.final-result').show();
         }
     };
+    //timer function is used to set the time for each function
     _t.timer = function() {
         _t.count--;
         if (_t.count <= 0) {
             setTimeout(function() {
                 _t.nextQ();
+                var correctvar = _t.questions[_t.current-1].choices[_t.questions[_t.current-1].correct];
+              // console.log(_t.questions[_t.current-1].choices[_t.questions[_t.current-1].correct]) ; 
+               $('#choices_div').text("you are not click any Answer! The correct answer was: " + correctvar);
+               $('.img-section').html("<img src='"+_t.questions[_t.current-1].images+"' />"); 
+               
             });
  
         } else {
             $("#timer").html("Time remaining: " + "00:" + _t.count + " secs");
         }
     };
+    //nextQ function is uased to call the next function
     _t.nextQ = function() {
         _t.current++;
         clearInterval(window.triviaCounter);
         _t.count = 30;
         $('#timer').html("");
-        $('#choices_div').html("");
-       var correct = _t.questions[_t.current-1].choices[_t.questions[_t.current-1].correct];
-        $('#choices_div').text("Wrong Answer! The correct answer was: " + correct);
-        $('.img-section').html("<img src='"+_t.questions[_t.current-1].images+"' />"); 
-   
        
         setTimeout(function() {
             _t.cleanUp();
@@ -106,29 +116,30 @@ $.fn.trivia = function() {
             
         }, 1000*3)
     };
+    //cleanup function is used to reset the 
     _t.cleanUp = function() {
         $('div[id]').each(function(item) {
             $(this).html('');
         });
         $('.img-section').html("");
-        $('.correct').html('Correct answers: ' + _t.answers.correct);
-        $('.incorrect').html('Incorrect answers: ' + _t.answers.incorrect);
     };
+    //answer function used to identify the answer whether it is correct or incorrect 
     _t.answer = function(correct) {
         var string = correct ? 'correct' : 'incorrect';
         _t.answers[string]++;
-        $('.' + string).html(string + ' answers: ' + _t.answers[string]);
     };
     return _t;
  };
- 
+ //when we click the start button then the first question is loaded
  $("#start_button").click(function() {
     $(this).hide();
     $('.result').remove();
+    $('.correct').html(' ');
+    $('.incorrect').html(' ');
     Trivia = new $(window).trivia();
     Trivia.ask();
  });
- 
+ //choice_div function is used to calculate the correct and incorrect answer when user click the choice button
  $('#choices_div').on('click', 'button', function(e) {
     var userPick = $(this).data("id"),
         _t = Trivia || $(window).trivia(),
